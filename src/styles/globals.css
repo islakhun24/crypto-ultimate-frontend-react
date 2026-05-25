@@ -1,0 +1,464 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 186 100% 50%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 186 100% 50%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 186 100% 50%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 186 100% 50%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* ===== CSS Custom Properties for Neon Theme ===== */
+:root {
+  --neon-cyan: #00f0ff;
+  --neon-magenta: #ff00ff;
+  --neon-purple: #b829dd;
+  --neon-green: #00ff88;
+  --neon-red: #ff2d5f;
+  --neon-orange: #ff6b35;
+  --neon-yellow: #f0e800;
+  --bg-dark: #050508;
+  --bg-card: #0f0f1a;
+  --bg-card-border: #1a1a2e;
+}
+
+/* ===== BODY ===== */
+body {
+  overflow-x: auto;
+  overflow-y: auto;
+  background: var(--bg-dark);
+}
+
+/* ===== MAIN CONTENT AREA ===== */
+main {
+  overflow-x: visible;
+  overflow-y: visible;
+}
+main > div {
+  overflow-x: auto;
+}
+
+/* ===== ANIMATED BACKGROUND GRID ===== */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* ===== GRADIENT TEXT ===== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--neon-magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== CARD NEON ===== */
+.card-neon {
+  @apply rounded-2xl p-4 border border-[#1a1a2e] bg-[#0f0f1a]/80 backdrop-blur-xl;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-neon:hover {
+  border-color: rgba(0, 240, 255, 0.25);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.08), 0 4px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ===== GLASS ===== */
+.glass {
+  background: rgba(15, 15, 26, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 240, 255, 0.08);
+}
+
+/* ===== NEON TEXT COLORS ===== */
+.neon-text-cyan {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.4), 0 0 20px rgba(0, 240, 255, 0.15);
+}
+
+.neon-text-magenta {
+  color: var(--neon-magenta);
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.4), 0 0 20px rgba(255, 0, 255, 0.15);
+}
+
+.neon-text-green {
+  color: var(--neon-green);
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.4), 0 0 20px rgba(0, 255, 136, 0.15);
+}
+
+.neon-text-red {
+  color: var(--neon-red);
+  text-shadow: 0 0 8px rgba(255, 45, 95, 0.4), 0 0 20px rgba(255, 45, 95, 0.15);
+}
+
+.neon-text-yellow {
+  color: var(--neon-yellow);
+  text-shadow: 0 0 8px rgba(240, 232, 0, 0.4), 0 0 20px rgba(240, 232, 0, 0.15);
+}
+
+/* ===== GLOW BUTTON ===== */
+.glow-btn {
+  @apply px-4 py-2 rounded-xl font-mono text-xs font-medium transition-all duration-300;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(184, 41, 221, 0.1));
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  color: var(--neon-cyan);
+}
+
+.glow-btn:hover {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(184, 41, 221, 0.2));
+  border-color: rgba(0, 240, 255, 0.35);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+/* ===== ANIMATIONS ===== */
+
+/* Card reveal on mount */
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Fade in up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Scale in */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Neon pulse */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0, 240, 255, 0.2), 0 0 10px rgba(0, 240, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.4), 0 0 20px rgba(0, 240, 255, 0.2);
+  }
+}
+
+/* Glow sweep */
+@keyframes glowSweep {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Shimmer loading */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Counter animation */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ripple effect */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Pulse ring */
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+}
+
+/* Stagger animation utility */
+.stagger-children > * {
+  animation: cardReveal 0.5s ease-out backwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(7) { animation-delay: 0.35s; }
+.stagger-children > *:nth-child(8) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(9) { animation-delay: 0.45s; }
+.stagger-children > *:nth-child(10) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(11) { animation-delay: 0.55s; }
+.stagger-children > *:nth-child(12) { animation-delay: 0.6s; }
+
+/* Hover glow border effect */
+.hover-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.05), transparent);
+  transition: left 0.5s ease;
+}
+
+.hover-glow:hover::before {
+  left: 100%;
+}
+
+/* Animated border gradient */
+.border-gradient-animated {
+  position: relative;
+}
+
+.border-gradient-animated::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--neon-magenta), var(--neon-cyan));
+  background-size: 300% 300%;
+  animation: gradientShift 4s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.border-gradient-animated:hover::after {
+  opacity: 1;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Table row hover animation */
+.table-row-animate {
+  transition: all 0.2s ease;
+}
+
+.table-row-animate:hover {
+  background: rgba(0, 240, 255, 0.04);
+  transform: translateX(4px);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.3);
+}
+
+/* Sidebar scrollbar */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 2px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.1);
+}
+
+/* ===== SCANLINE OVERLAY ===== */
+.scanline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .card-neon {
+    padding: 0.75rem;
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
